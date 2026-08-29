@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cornel Cristea — DevOps & Infrastructure Automation Engineer</title>
+  <meta name="description" content="DevOps & Infrastructure Automation services: Ansible, Terraform/OpenTofu, Jenkins, GitHub Actions, Docker, Python, VMware, Proxmox." />
+  <meta name="author" content="Cornel Cristea" />
+  <style>
+    :root{
+      /* New palette: charcoal + deep purple + lime with glass/transparency accents */
+      --bg-1: #0b0f14;               /* deep charcoal background */
+      --bg-2: #0f1720;               /* secondary dark */
+      --card: rgba(255,255,255,0.03);/* translucent card */
+      --glass: rgba(255,255,255,0.04);/* subtle glass */
+      --accent: #7c3aed;            /* deep purple */
+      --accent-2: #a3e635;          /* lime green */
+      --muted: #9fb0bd;             /* muted text */
+      --text: #e8f1f5;              /* main text */
+      --chip-bg: rgba(255,255,255,0.02);
+      --maxw:1100px;
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: #0a0e12;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding-bottom:48px;
+    }
+
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:28px;position:relative}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:64px;height:64px;border-radius:12px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:900;color:#07121a;font-size:20px;
+      box-shadow:0 12px 36px rgba(124,58,237,0.06);
+      border:1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px) saturate(120%);
+    }
+
+    h1{font-size:1.25rem;margin:0}
+    p.lead{color:var(--muted);margin:6px 0 0;font-size:0.95rem}
+
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;transition:color .14s}
+    nav a:hover{color:var(--accent)}
+
+    .section{
+      margin-top:18px;
+      padding:22px;
+      border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .section:hover{ box-shadow: 0 18px 48px rgba(0,0,0,0.7); }
+
+    .grid-2{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+    @media (max-width:900px){ .grid-2{grid-template-columns:1fr} }
+
+    .muted{color:var(--muted)}
+    ul{padding-left:18px;margin:8px 0}
+
+    .chip{
+      background:var(--chip-bg);
+      color:var(--text);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:0.85rem;
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(4px);
+    }
+    .techs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+
+    .aside-card{
+      padding:18px;border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 10px 30px rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px) saturate(120%);
+    }
+
+    .info-block{
+      padding:14px;border-radius:10px;
+      background: linear-gradient(135deg, 
+        rgba(124, 58, 237, 0.08), 
+        rgba(163, 230, 53, 0.04));
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 4px 12px rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px) saturate(120%);
+      transition: all 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+      transition: left 0.5s ease;
+      pointer-events: none;
+    }
+
+    .info-block:hover::before {
+      left: 100%;
+    }
+
+    .info-block:hover{ 
+      transform: translateY(-6px) scale(1.02); 
+      box-shadow: 
+        inset 0 1px 0 rgba(255,255,255,0.04), 
+        0 12px 28px rgba(124,58,237,0.15);
+      border-color: rgba(124, 58, 237, 0.3);
+    }
+
+    h2,h3,h4{margin:0 0 8px 0}
+    h2{font-size:1.05rem}
+    h3{font-size:0.98rem}
+
+    .btn{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+      color:#07121a;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      box-shadow: 0 16px 40px rgba(124,58,237,0.08);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover{ transform: translateY(-4px); box-shadow: 0 22px 50px rgba(124,58,237,0.12); }
+
+    .sep{
+      height:1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      margin:18px 0;
+      border-radius:2px;
+    }
+
+    footer{
+      margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.03);
+      display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted);
+    }
+
+    @media (max-width:520px){
+      .logo{width:52px;height:52px;font-size:16px}
+      .wrap{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">CC</div>
+        <div>
+          <h1>DevOps & Infrastructure Automation Engineer</h1>
+          <p class="lead">Implementation-focused services for infrastructure automation, CI/CD and virtualization.</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- About / Experience -->
+    <section id="about" class="section">
+      <div class="grid-2">
+        <div>
+          <h2>About me</h2>
+          <p class="muted">I am a DevOps and Platform Engineer with extensive hands-on experience delivering infrastructure automation, CI/CD pipelines and virtualization solutions for enterprise and mid-market organizations. I specialize in converting manual, error-prone processes into repeatable, auditable workflows that scale across teams and environments.</p>
+          <p class="muted"><strong>Value I deliver</strong></p>
+          <p class="muted">I deliver measurable outcomes: faster release cycles, fewer incidents, predictable infrastructure, and clear operational documentation that enables internal teams to operate independently after handover.</p>
+        </div>
+
+        <ul class="muted" style="margin:6px 0 0 0">
+          <h4>Engagement types</h4>
+          <li><strong>Implementation Sprint</strong> — focused 4–8 week delivery of automation, IaC and pipelines.</li>
+          <li><strong>Managed Partnership</strong> — ongoing platform support and incremental improvements.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <h2>Services</h2>
+      <p class="muted">Implementation-focused services covering design, build, validate and handover. I work with product and infrastructure teams to deliver production-ready automation and delivery platforms.</p>
+
+      <div class="sep"></div>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px">
+        <div class="info-block">
+          <strong>Infrastructure Automation</strong>
+          <div class="muted" style="margin-top:8px">Ansible playbooks and roles for consistent, idempotent configuration across environments.</div>
+        </div>
+
+        <div class="info-block">
+          <strong>Infrastructure as Code</strong>
+          <div class="muted" style="margin-top:8px">Terraform / OpenTofu modules, state management and reusable patterns for safe provisioning.</div>
+        </div>
+
+        <div class="info-block">
+          <strong>CI/CD Pipelines</strong>
+          <div class="muted" style="margin-top:8px">Jenkins and GitHub Actions pipelines for automated build, test and deployment workflows.</div>
+        </div>
+
+        <div class="info-block">
+          <strong>Containerization & Tooling</strong>
+          <div class="muted" style="margin-top:8px">Docker image optimization, secure build practices, and custom tooling in Python/Bash.</div>
+        </div>
+
+        <div class="info-block">
+          <strong>Virtualization & Operations</strong>
+          <div class="muted" style="margin-top:8px">VMware and Proxmox administration, migrations, backup and recovery strategies.</div>
+        </div>
+
+        <div class="info-block">
+          <strong>Runbooks & Handover</strong>
+          <div class="muted" style="margin-top:8px">Operational documentation and knowledge transfer to ensure smooth handover to internal teams.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p class="muted">Ready to start an implementation sprint or discuss a managed partnership? </p>
+      <div style="margin-top:14px;color:var(--muted)">
+        <p class="muted"><strong>What I need to start</strong></p>
+        <ul class="muted" style="margin:6px 0 0 0">
+          <li>Short description of goals and timeline</li>
+          <li>High-level architecture or current pipeline overview (if available)</li>
+          <li>Primary constraints (security, compliance, maintenance windows)</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:12px">
+        <a class="btn" href="mailto:cornelcristea97@gmail.com?subject=Services%20Inquiry&body=Hi%20Cornel%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project.%20Here%20is%20a%20short%20summary%20of%20the%20goals%20and%20timeline%3A%0A%0A%5BProject%20summary%5D%0A%0AThanks%2C%0A%5BYour%20name%5D">Send Message</a>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <strong>Cornel Cristea</strong> — DevOps & Infrastructure Automation Engineer</div>
+      <div style="color:var(--muted)">Implementation-focused services for enterprise delivery</div>
+    </footer>
+
+  </div>
+</body>
+</html>
